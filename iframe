@@ -1,0 +1,29 @@
+        <iframe id="myIframe" src="https://app-test.tfaforms.net/wfLraAg" height="1000" width="100%" frameborder="0"></iframe>
+        <script src="https://app-test.tfaforms.net/js/iframe_resize_helper.js"></script>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', function() {
+                // Define temporary variables to hold the values of the UTM parameters:
+                let utmId;
+                let utmSource;
+                let utmMedium;
+                let utmCampaign;
+                let utmTerm;
+                let utmContent;
+                
+                // Extract the values of the UTM parameters from the URL:
+                const urlParams = new URLSearchParams(window.location.search);
+                utmId = urlParams.get('utm_id');
+                utmSource = urlParams.get('utm_source');
+                utmMedium = urlParams.get('utm_medium');
+                utmCampaign = urlParams.get('utm_campaign');
+                utmTerm = urlParams.get('utm_term');
+                utmContent = urlParams.get('utm_content');
+
+                // Use the values of the UTM parameters by appending it to the updated value of 'src' in iframe
+                let myIframe = document.getElementById("myIframe");
+                let myWorkflow = "https://app-test.tfaforms.net/wfLraAg";
+                let updateWorkflowURL = myWorkflow + "?utm_id=" + utmId + "&utm_source=" + utmSource + "&utm_medium=" + utmMedium + "&utm_campaign=" + utmCampaign + "&utm_term=" + utmTerm + "&utm_content=" + utmContent
+                myIframe.src = updateWorkflowURL;
+            });
+        </script>
